@@ -1,30 +1,26 @@
-function threeSum(a) {
+function threeSum(nums) {
 // write your code here
-let n = a.length;
-
-    a.sort((a, b) => a - b);
-
-    let aa = [];
-    let vis = new Set();
-    for (let i = 0; i < n; i++) {
-        let t = -a[i]; // target;
-        for (let L = i + 1, R = n - 1; L < R; ) {
-            let sum = a[L] + a[R];
-            if (sum === t) {
-                let key = `${a[i]} ${a[L]} ${a[R]}`;
-                if (!vis.has(key)) {
-                    vis.add(key);
-                    aa.push([a[i], a[L], a[R]]);
-                }
-                L++;
-            } else if (sum < t) {
-                L++;
-            } else {
-                R--;
+let obj={}
+    nums=nums.sort((a,b)=>a-b)
+    // console.log(nums)
+    for(let start=0;start<nums.length;start++){
+        let right=nums.length-1
+        let left=start+1
+        while(left<right){
+            if(nums[left]+nums[right]+nums[start]==0){
+                // console.log(start,left,right)
+                // arr.push([nums[start],nums[left],nums[right]])
+                obj[[nums[start],nums[left],nums[right]]]=[nums[start],nums[left],nums[right]]
+                left++
+                right--
+            }else if(nums[left]+nums[right]+nums[start]>0){
+                right--
+            }else if(nums[left]+nums[right]+nums[start]<0){
+                left++
             }
         }
     }
-    return aa;
+     return (Object.values(obj))
 };
   
 
