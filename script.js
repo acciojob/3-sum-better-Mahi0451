@@ -1,4 +1,4 @@
-function threeSum(arr, target) {
+function threeSum(arr) {
 // write your code here
  let start = i+1,end = arr.length -1;
  while(start < end){
