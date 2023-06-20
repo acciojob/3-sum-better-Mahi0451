@@ -1,28 +1,30 @@
 function threeSum(nums) {
 // write your code here
-let obj={}
-    nums=nums.sort((a,b)=>a-b)
-    // console.log(nums)
-    for(let start=0;start<nums.length;start++){
-        let right=nums.length-1
-        let left=start+1
-        while(left<right){
-            if(nums[left]+nums[right]+nums[start]==0){
-                // console.log(start,left,right)
-                // arr.push([nums[start],nums[left],nums[right]])
-                obj[[nums[start],nums[left],nums[right]]]=[nums[start],nums[left],nums[right]]
-                left++
-                right--
-            }else if(nums[left]+nums[right]+nums[start]>0){
-                right--
-            }else if(nums[left]+nums[right]+nums[start]<0){
-                left++
-            }
-        }
+ var len = nums.length;
+  var res = [];
+  var l = 0;
+  var r = 0;
+  nums.sort((a, b) => (a - b));
+  for (var i = 0; i < len; i++) {
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+    l = i + 1;
+    r = len - 1;
+    while (l < r) {
+      if (nums[i] + nums[l] + nums[r] < 0) {
+        l++;
+      } else if (nums[i] + nums[l] + nums[r] > 0) {
+        r--;
+      } else {
+        res.push([nums[i], nums[l], nums[r]]);
+        while (l < r && nums[l] === nums[l + 1]) l++;
+        while (l < r && nums[r] === nums[r - 1]) r--;
+        l++;
+        r--;
+      }
     }
-     return (Object.values(obj))
+  }
+  return res;
 };
-  
 
 
 module.exports = threeSum;
