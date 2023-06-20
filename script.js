@@ -1,19 +1,19 @@
 function threeSum(arr) {
 // write your code here
  let res=[]; 
-	nums.sort((a,b)=>(a-b))
-    for(let i=0;i<nums.length-2;i++){
+	arr.sort((a,b)=>(a-b))
+    for(let i=0;i<arr.length-2;i++){
         //to remove duplicates
-        if( i>0 && nums[i]===nums[i-1]) continue;
+        if( i>0 && arr[i]===arr[i-1]) continue;
 
-        let j=i+1; let k=nums.length-1;
+        let j=i+1; let k=arr.length-1;
         while(j<k){
-            let sum = nums[i] + nums[j] + nums[k];
+            let sum = arr[i] + arr[j] + arr[k];
             if(sum===0){
-                res.push([nums[i],nums[j],nums[k]]);
+                res.push([arr[i],arr[j],arr[k]]);
                 //stop duplicates
-                while(nums[j]===nums[j+1]) j++;//or else we end up getting a duplicate triplet
-                while(nums[k]===nums[k+1]) k--;//or else we end up getting a duplicate triplet
+                while(arr[j]===arr[j+1]) j++;//or else we end up getting a duplicate triplet
+                while(arr[k]===arr[k+1]) k--;//or else we end up getting a duplicate triplet
                 j++;//even if they aren't equal we still incremenet j
                 k--;//even if they aren't equal we still decrement k
             }
