@@ -1,6 +1,9 @@
-function threeSum(nums) {
+function threeSum(arr, target) {
 // write your code here
- let closestSum = arr[0] + arr[1] + arr[2];
+	arr.sort((a, b) => a - b);
+  
+  // Initialize variables
+  let closestSum = arr[0] + arr[1] + arr[2];
   
   // Iterate through the array
   for (let i = 0; i < arr.length - 2; i++) {
@@ -25,6 +28,9 @@ function threeSum(nums) {
       }
     }
   }
-  return closestSum; 
+  
+  return closestSum;
+  
 }
+ 
 module.exports = threeSum;
